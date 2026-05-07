@@ -11,41 +11,80 @@
 :root{--cream:#F6F1E8;--cream-dark:#EEE8DA;--ink:#1C1C1A;--ink-mid:#4A4A46;--ink-light:#888880;--rule:#D8D0C0;--accent:#8B6F47;--link:#5C4830}
 *{margin:0;padding:0;box-sizing:border-box}
 html{scroll-behavior:smooth}
-body{background:var(--cream);color:var(--ink);font-family:'DM Sans',sans-serif;font-weight:300;font-size:15.5px;line-height:1.8;max-width:720px;margin:0 auto;padding:0 2rem}
-nav{position:sticky;top:0;background:var(--cream);border-bottom:1px solid var(--rule);padding:1rem 0;z-index:100;display:flex;gap:2rem;align-items:center}
-nav a{font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--ink-mid);text-decoration:none;font-weight:400;transition:color .2s}
-nav a:hover{color:var(--ink)}
-.nav-name{font-family:'EB Garamond',Georgia,serif;font-size:15px;letter-spacing:0;text-transform:none;color:var(--ink);font-weight:500;margin-right:auto}
-.cv-header{padding:3rem 0 2rem;border-bottom:1px solid var(--rule)}
-.cv-header h1{font-family:'EB Garamond',Georgia,serif;font-size:2.2rem;font-weight:500;margin-bottom:.5rem}
-.cv-header p{font-size:14px;color:var(--ink-mid);margin-bottom:1rem}
-.cv-header a{font-size:13px;color:var(--link)}
-.pdf-viewer{width:100%;height:90vh;border:1px solid var(--rule);margin:1.5rem 0;display:block;border-radius:2px}
-footer{padding:3rem 0 4rem;border-top:1px solid var(--rule)}
-.back-link{font-size:13px;color:var(--link);text-decoration:none;border-bottom:1px solid var(--rule);padding-bottom:1px}
-@media(max-width:560px){nav{gap:1.2rem;flex-wrap:wrap}}
+body{background:var(--cream);color:var(--ink);font-family:'DM Sans',sans-serif;font-weight:300;font-size:15.5px;line-height:1.8}
+
+/* sidebar */
+.sidebar{position:fixed;left:0;top:0;width:240px;height:100vh;background:var(--cream-dark);border-right:1px solid var(--rule);padding:2rem 1.5rem;overflow-y:auto}
+.sidebar .avatar{width:160px;height:160px;border-radius:50%;overflow:hidden;margin:0 auto 1rem;background:var(--cream);border:1px dashed var(--rule);display:flex;align-items:center;justify-content:center}
+.sidebar .avatar span{font-size:11px;color:var(--ink-light);text-align:center;line-height:1.4;padding:0 1rem}
+.sidebar h3{font-family:'EB Garamond',Georgia,serif;font-size:1.2rem;font-weight:500;text-align:center;margin-bottom:.2rem}
+.sidebar .bio{font-size:12px;color:var(--ink-mid);text-align:center;margin-bottom:1.2rem;line-height:1.5}
+.sidebar ul{list-style:none;font-size:13px}
+.sidebar li{padding:.3rem 0;color:var(--ink-mid)}
+.sidebar li a{color:var(--link);text-decoration:none;transition:color .2s}
+.sidebar li a:hover{color:var(--ink)}
+.sidebar .label{font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--ink-light);margin-bottom:.2rem}
+
+/* top nav */
+.top-nav{margin-left:240px;background:var(--cream);border-bottom:1px solid var(--rule);padding:.8rem 2rem;display:flex;gap:1.5rem;align-items:center;position:sticky;top:0;z-index:100}
+.top-nav .nav-name{font-family:'EB Garamond',Georgia,serif;font-size:15px;letter-spacing:0;color:var(--ink);font-weight:500;margin-right:auto}
+.top-nav a{font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--ink-mid);text-decoration:none;font-weight:400;transition:color .2s}
+.top-nav a:hover,.top-nav a.active{color:var(--ink)}
+
+/* main content */
+.main{margin-left:240px;padding:1.5rem 2rem 3rem}
+.cv-header{padding-bottom:1.5rem;margin-bottom:1.5rem;border-bottom:1px solid var(--rule)}
+.cv-header h1{font-family:'EB Garamond',Georgia,serif;font-size:2rem;font-weight:500;margin-bottom:.4rem}
+.cv-header p{font-size:14px;color:var(--ink-mid)}
+.cv-header a{color:var(--link)}
+.pdf-viewer{width:100%;height:calc(100vh - 200px);border:1px solid var(--rule);display:block;border-radius:2px}
+
+@media(max-width:900px){
+  .sidebar{position:relative;width:100%;height:auto;border-right:none;border-bottom:1px solid var(--rule);padding:1.5rem}
+  .main,.top-nav{margin-left:0}
+  .pdf-viewer{height:70vh}
+}
+@media(max-width:560px){.top-nav{flex-wrap:wrap;gap:1rem}}
 </style>
 </head>
 <body>
 
-<nav>
+<!-- SIDEBAR -->
+<aside class="sidebar">
+  <div class="avatar">
+    <span>Photo</span>
+  </div>
+  <h3>Aly Dhedhi</h3>
+  <p class="bio">Healthcare AI Researcher<br>Pre-med · Machine Learning</p>
+  <ul>
+    <li><a href="/"><i class="fas fa-home"></i> Website</a></li>
+    <li><a href="mailto:alydhedhi@gmail.com">Email</a></li>
+    <li><a href="https://www.linkedin.com/in/aly-dhedhi-673228350" target="_blank">LinkedIn</a></li>
+    <li><a href="https://github.com/DHEDHiAly" target="_blank">GitHub</a></li>
+    <li><a href="https://orcid.org/0009-0007-9255-4906" target="_blank">ORCID</a></li>
+  </ul>
+</aside>
+
+<!-- TOP NAV -->
+<nav class="top-nav">
   <span class="nav-name">Aly Dhedhi</span>
   <a href="/">Home</a>
   <a href="/#current">Research</a>
+  <a href="/#past">Projects</a>
   <a href="/#education">Education</a>
+  <a href="/cv/" class="active">CV</a>
   <a href="/#contact">Contact</a>
 </nav>
 
-<header class="cv-header">
-  <h1>CV</h1>
-  <p>Here is a link to the PDF file shown below: <a href="resume.pdf" target="_blank">Aly Dhedhi CV (PDF)</a></p>
-</header>
+<!-- MAIN CONTENT -->
+<div class="main">
+  <header class="cv-header">
+    <h1>CV</h1>
+    <p>Here is a link to the PDF file shown below: <a href="resume.pdf" target="_blank">Aly Dhedhi CV (PDF)</a></p>
+  </header>
 
-<iframe class="pdf-viewer" src="resume.pdf" title="Aly Dhedhi CV"></iframe>
-
-<footer>
-  <a class="back-link" href="/">← Back to website</a>
-</footer>
+  <iframe class="pdf-viewer" src="resume.pdf" title="Aly Dhedhi CV"></iframe>
+</div>
 
 </body>
 </html>
